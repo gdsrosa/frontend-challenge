@@ -1,0 +1,25 @@
+[
+  {
+    "id": "1",
+    "voice": "Voice 1",
+    "text": "This is better than the films—far, far, better. Why go to the cinema, when you can stage this sort of thing in your own home?"
+  },
+
+  {
+    "id": "2",
+    "voice": "Voice 2",
+    "text": "Yes, but look here, Doyle, what’s going to happen? We can’t have Laura taken off to the police-station."
+  },
+
+  {
+    "id": "3",
+    "voice": "Voice 1",
+    "text": "Why not?"
+  },
+
+  {
+    "id": "4",
+    "voice": "Voice 1",
+    "text": "It’d do her all the good in the world. And I wouldn’t bail her out either."
+  }
+]

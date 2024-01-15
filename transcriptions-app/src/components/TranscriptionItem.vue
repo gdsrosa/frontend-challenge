@@ -10,13 +10,13 @@
         class="card-items-input-title"
         type="text"
         name="title"
-        value="Voice 2"
+        :value="props.transcription.voice"
       />
       <input
         class="card-items-input-description"
         type="text"
         name="description"
-        value="This is one line sentence made to show how it fits"
+        :value="props.transcription.text"
       />
     </div>
     <button class="button">
@@ -28,6 +28,9 @@
 <script setup lang="ts">
 import PersonIcon from '../assets/person.svg';
 import RecycleBinIcon from '../assets/delete.svg';
+import { Transcription } from '../api/types';
+
+const props = defineProps<{ transcription: Transcription }>();
 </script>
 
 <style scoped>

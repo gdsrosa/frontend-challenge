@@ -12,8 +12,9 @@
       </div>
     </header>
     <main class="container">
-      <TranscriptionItem />
-      <TranscriptionItem />
+      <template :key="transcription.id" v-for="transcription in transcriptions">
+        <TranscriptionItem :transcription="transcription" />
+      </template>
       <div class="container-item">
         <button class="button">
           <img :src="AddRowIcon" alt="Add Row" />
@@ -24,10 +25,24 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted, ref } from 'vue';
+
 import TranscriptionItem from './TranscriptionItem.vue';
+
+import { Transcription } from '../api/types';
+
 import FetchDataIcon from '../assets/fetch-document.svg';
 import UploadIcon from '../assets/upload.svg';
 import AddRowIcon from '../assets/add-row.svg';
+
+import { getTranscriptions } from '../api';
+
+const transcriptions = ref<Transcription[] | null>(null);
+
+onMounted(async () => {
+  const data = await getTranscriptions();
+  transcriptions.value = data;
+});
 </script>
 
 <style scoped>
