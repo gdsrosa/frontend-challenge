@@ -58,4 +58,18 @@ async function handlePostTranscriptions() {
   border: none;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .header {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .header {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
 </style>
