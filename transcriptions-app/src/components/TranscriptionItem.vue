@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-item">
-      <input type="checkbox" name="transcription" />
+      <Checkbox :id="props.transcription.id" />
       <img class="card-item--image" :src="PersonIcon" alt="Drawing of a face" />
     </div>
 
@@ -28,8 +28,11 @@
 <script setup lang="ts">
 import PersonIcon from '@/assets/person.svg';
 import RecycleBinIcon from '@/assets/delete.svg';
+
 import { Transcription } from '@/api/types';
 import { useTranscriptionsStore } from '@/store/transcriptions';
+
+import Checkbox from './Checkbox.vue';
 
 const props = defineProps<{ transcription: Transcription }>();
 
