@@ -19,18 +19,25 @@
         :value="props.transcription.text"
       />
     </div>
-    <button class="button">
+    <button class="button" @click="handleRemoveRowClick()">
       <img :src="RecycleBinIcon" alt="Bin Icon" />
     </button>
   </div>
 </template>
 
 <script setup lang="ts">
-import PersonIcon from '../assets/person.svg';
-import RecycleBinIcon from '../assets/delete.svg';
-import { Transcription } from '../api/types';
+import PersonIcon from '@/assets/person.svg';
+import RecycleBinIcon from '@/assets/delete.svg';
+import { Transcription } from '@/api/types';
+import { useTranscriptionsStore } from '@/store/transcriptions';
 
 const props = defineProps<{ transcription: Transcription }>();
+
+const store = useTranscriptionsStore();
+
+function handleRemoveRowClick() {
+  store.removeTranscriptionRow(props.transcription);
+}
 </script>
 
 <style scoped>

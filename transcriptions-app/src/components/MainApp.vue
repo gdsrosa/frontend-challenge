@@ -1,22 +1,12 @@
 <template>
   <div class="main-app">
-    <header class="header">
-      <h2 class="header-title">Transcriptions</h2>
-      <div class="header-items">
-        <button class="button">
-          <img :src="UploadIcon" alt="Button to upload data" />
-        </button>
-        <button class="button">
-          <img :src="FetchDataIcon" alt="Button to get information" />
-        </button>
-      </div>
-    </header>
-    <main class="container">
+    <Header />
+    <main v-if="transcriptions?.length" class="container">
       <template :key="transcription.id" v-for="transcription in transcriptions">
         <TranscriptionItem :transcription="transcription" />
       </template>
       <div class="container-item">
-        <button class="button">
+        <button class="button" @click="handleAddRowClick">
           <img :src="AddRowIcon" alt="Add Row" />
         </button>
       </div>
@@ -25,24 +15,21 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { storeToRefs } from 'pinia';
 
 import TranscriptionItem from './TranscriptionItem.vue';
+import Header from './Header.vue';
 
-import { Transcription } from '../api/types';
+import AddRowIcon from '@/assets/add-row.svg';
 
-import FetchDataIcon from '../assets/fetch-document.svg';
-import UploadIcon from '../assets/upload.svg';
-import AddRowIcon from '../assets/add-row.svg';
+import { useTranscriptionsStore } from '@/store/transcriptions';
 
-import { getTranscriptions } from '../api';
+const store = useTranscriptionsStore();
+const { transcriptions } = storeToRefs(useTranscriptionsStore());
 
-const transcriptions = ref<Transcription[] | null>(null);
-
-onMounted(async () => {
-  const data = await getTranscriptions();
-  transcriptions.value = data;
-});
+function handleAddRowClick() {
+  store.addTranscriptionRow();
+}
 </script>
 
 <style scoped>
@@ -54,29 +41,6 @@ onMounted(async () => {
   background-color: transparent;
   border: none;
   cursor: pointer;
-}
-
-.header {
-  align-items: center;
-  background-color: #fff;
-  border-bottom-width: 1px;
-  border: 1px solid #d4d5d6;
-  display: flex;
-  justify-content: space-between;
-  padding-left: 9rem;
-  padding-right: 9rem;
-}
-.header-title {
-  color: #414c5e;
-  font-family: 'Montserrat', sans-serif;
-  padding-bottom: 1rem;
-  padding-top: 1rem;
-}
-
-.header-items {
-  display: flex;
-  justify-content: space-between;
-  width: 4rem;
 }
 
 .container {
