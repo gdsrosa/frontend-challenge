@@ -1,18 +1,45 @@
-# Vue 3 + TypeScript + Vite
+# Getting started
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes, to do so clone this repo:
 
-## Recommended IDE Setup
+```bash
+git clone https://github.com/gdsrosa/frontend-challenge.git
+cd transcriptions-app
+```
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Installing
 
-## Type Support For `.vue` Imports in TS
+Assuming you have all the Node.js and NPM environment setup in your machine:
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+Let's install the dependencies
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+```bash
+npm install
+```
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+## Running the application in development mode
+
+To start the application run:
+
+```bash
+npm run dev
+```
+
+## Running the tests
+
+To execute the unit tests:
+
+```bash
+npm run test
+```
+
+## Built With
+
+- [Typescript](https://www.typescriptlang.org/) - The programming language used for the Client
+- [VueJS](https://vuejs.org/) - The UI library used for the Client
+- [NPM](http://npmjs.org) - Dependency Management
+- [Vitest](https://vitest.dev/) - JavaScript Unit Test tool
+
+## Author
+
+- **Gabriel Rosa** - [gdsrosa](https://github.com/gdsrosa)
