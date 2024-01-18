@@ -1,7 +1,11 @@
 <template>
   <div class="main-app">
     <Header />
-    <main v-if="transcriptions?.length" class="container">
+    <main
+      v-if="transcriptions?.length"
+      class="container"
+      data-test="transcriptions"
+    >
       <template :key="transcription.id" v-for="transcription in transcriptions">
         <TranscriptionItem :transcription="transcription" />
       </template>

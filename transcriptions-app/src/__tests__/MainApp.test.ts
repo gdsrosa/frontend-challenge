@@ -1,12 +1,36 @@
-import { expect, test } from 'vitest';
+import { beforeEach, expect, it, describe } from 'vitest';
 import { mount } from '@vue/test-utils';
 
-import MainApp from '../components/MainApp.vue';
+import MainApp from '@/components/MainApp.vue';
+import { createPinia, setActivePinia } from 'pinia';
+import { useTranscriptionsStore } from '@/store/transcriptions';
 
-test('should render message', () => {
-  const props = { message: 'Transcriptions' };
+describe('MainApp', () => {
+  beforeEach(() => {
+    setActivePinia(createPinia());
+  });
 
-  const wrapper = mount(MainApp, { props });
+  it('should render message', () => {
+    const props = { message: 'Transcriptions' };
 
-  expect(wrapper.text()).toContain('Transcriptions');
+    const wrapper = mount(MainApp, { props });
+
+    expect(wrapper.text()).toContain('Transcriptions');
+  });
+
+  it('should not have transcriptions on the first render', () => {
+    const wrapper = mount(MainApp);
+
+    expect(wrapper.find('[data-test="transcriptions"]').exists()).toBe(false);
+  });
+
+  it('should fetch transcriptions when action is called', async () => {
+    const state = useTranscriptionsStore();
+
+    expect(state.transcriptions.length).toBe(0);
+
+    await state.fetchTranscriptions();
+
+    expect(state.transcriptions.length).toBe(4);
+  });
 });

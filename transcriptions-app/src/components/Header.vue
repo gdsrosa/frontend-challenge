@@ -2,7 +2,11 @@
   <header class="header">
     <h2 class="header-title">Transcriptions</h2>
     <div class="header-items">
-      <button class="button" @click="handleGetTranscriptions">
+      <button
+        class="button"
+        @click="handleGetTranscriptions"
+        data-test="upload"
+      >
         <img :src="UploadIcon" alt="Button to upload data" />
       </button>
       <button class="button" @click="handlePostTranscriptions">
